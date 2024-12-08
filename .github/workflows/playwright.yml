@@ -119,10 +119,7 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: |
-            playwright-report
-            test-report
-            other-test-report
+          path: "playwright-report test-report other-test-report"
 
       - name: Deploy to pages
         id: deployment
