@@ -184,15 +184,20 @@ jobs:
           name: playwright-report-stage2
           path: playwright-report/
           retention-days: 30
-      - name: Push report to github pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./playwright-report
-          destination_dir: "one"
 
-      - name: Write url in summary
-        run: echo "### Test results - https://${{ github.repository_owner }}.github.io"
+      # - name: Push report to github pages
+      #   uses: actions/configure-pages@v2
+      # - name: apload artifacts
+      #   uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: playwright-port
+      - name: Deploy to pages
+        id: deployment
+        uses:
+          actions/deploy-pages@v1
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          # publish_dir: ./playwright-report
+          # destination_dir: "one"
 
   stage3:
     runs-on: ubuntu-latest
