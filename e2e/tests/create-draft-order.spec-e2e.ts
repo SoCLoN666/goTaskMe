@@ -14,18 +14,25 @@ test("create draft order @test", async ({
 }) => {
   console.warn(EMAIL_ADDRESS);
 
-  await LoginInAccountOperator.openPage();
-  await LoginInAccountOperator.loginIntoAccount(EMAIL_ADDRESS, PASSWORD);
-  await OrdersPageOperator.selectAddNewOrder();
-  await CreateNewOrderOperator.createNewOrder({
-    contentType: "PowerPoint presentation",
-    service: "Writing",
-    language: "English (UK)",
-    numberOfSlides: 5,
-    topicName: "Kusmin, task",
-    theme: "English",
-    contentRequirements: "requirements",
+  await test.step("login", async () => {
+    await LoginInAccountOperator.openPage();
+    await LoginInAccountOperator.loginIntoAccount(EMAIL_ADDRESS, PASSWORD);
   });
+
+  await test.step("create new order", async () => {
+    await OrdersPageOperator.selectAddNewOrder();
+    await CreateNewOrderOperator.createNewOrder({
+      contentType: "PowerPoint presentation",
+      service: "Writing",
+      language: "English (UK)",
+      numberOfSlides: 5,
+      topicName: "Kusmin, task",
+      theme: "English",
+      contentRequirements: "requirements",
+    });
+  });
+
+  await test.step('validate error appear')
 
   const confirmationError = CreateNewOrderOperator.Stage.ConfirmationStage.Ids.confirmationError;
 
