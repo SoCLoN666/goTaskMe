@@ -75,6 +75,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: email-address
+          path: e2e/setup/
       - name: Run Tests
         run: yarn test:e2e
       - uses: actions/upload-artifact@v4
@@ -96,6 +97,11 @@ jobs:
         run: npm install -g yarn && yarn
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
+      - name: Download Email Address Artifact in Stage 2
+        uses: actions/download-artifact@v4
+        with:
+          name: email-address
+          path: e2e/setup/
       - name: Cleanup Stage
         run: yarn e2e:cleanup
       - uses: actions/upload-artifact@v4
