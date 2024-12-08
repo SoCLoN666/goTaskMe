@@ -61,7 +61,7 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
       - name: Run Tests
-        run: yarn e2e:test
+        run: yarn test:e2e
 
   stage3:
     runs-on: ubuntu-latest
