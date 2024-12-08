@@ -254,7 +254,7 @@ jobs:
           path: playwright-report/prepare # Location to save the downloaded artifact
       - name: Set up
         uses: actions/configure-pages@v2
-      - name: apload artifacts
+      - name: upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
           path: playwright-report/
