@@ -22,9 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install -g yarn@latest && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Register User
-        run: npm run e2e:prepare
+        run: yarn e2e:prepare
       - name: Upload Email Address Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -51,14 +51,14 @@ jobs:
       - name: Install dependencies
         run: npm install -g yarn@latest && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
           name: email-address
           path: e2e/setup/
       - name: Run Tests
-        run: npm run test:e2e
+        run: yarn test:e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -77,14 +77,14 @@ jobs:
       - name: Install dependencies
         run: npm run install -g yarn@latest && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
           name: email-address
           path: e2e/setup/
       - name: Cleanup Stage
-        run: npm run e2e:cleanup
+        run: yarn e2e:cleanup
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
