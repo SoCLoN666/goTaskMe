@@ -126,6 +126,153 @@
 #           github_token: ${{ secrets.GITHUB_TOKEN }} # Correct input field
 #           publish_dir: playwright-report # Correct input for the folder to deploy
 
+# HERE !
+
+# name: Playwright Tests
+# on:
+#   push:
+#     branches: [main, master]
+#   pull_request:
+#     branches: [main, master]
+#   workflow_dispatch:
+
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
+
+# jobs:
+#   stage1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#       # - name: Install dependencies
+#       #   run: npm install -g yarn@latest && yarn
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Install Playwright Browsers
+#         run: npm run playwright install chromium
+#       - name: Register User
+#         run: npm run e2e:prepare
+#       - name: Upload Email Address Artifact
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: email-address
+#           path: e2e/setup/temp.json
+#       - uses: actions/upload-artifact@v4
+#         if: ${{ !cancelled() }}
+#         with:
+#           name: playwright-report-stage1
+#           path: playwright-report/
+#           retention-days: 30
+
+#   stage2:
+#     runs-on: ubuntu-latest
+#     needs: stage1
+#     permissions:
+#       id-token: write
+#       pages: write
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#         # - name: Install dependencies
+#         #   run: npm install -g yarn@latest && yarn
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Install Playwright Browsers
+#         run: npm run playwright install chromium
+#       - name: Download Email Address Artifact in Stage 2
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: email-address
+#           path: e2e/setup/
+#       - name: Run Tests
+#         run: npm run test:e2e
+#       - uses: actions/upload-artifact@v4
+#         if: ${{ !cancelled() }}
+#         with:
+#           name: playwright-report-stage2
+#           path: test-report/
+#           retention-days: 30
+
+#       # - name: Set up
+#       #   uses: actions/configure-pages@v2
+#       # - name: apload artifacts
+#       #   uses: actions/upload-pages-artifact@v1
+#       #   with:
+#       #     path: playwright-report/
+
+#       # - name: Deploy to pages
+#       #   id: deployment
+#       #   uses:
+#       #     actions/deploy-pages@v1
+
+#       # - name: Output Deployed URL
+#       # run: echo "Deployed site URL: ${{ steps.deployment.outputs.page_url }}"
+
+#   stage3:
+#     runs-on: ubuntu-latest
+#     needs: stage2
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: actions/setup-node@v4
+#         with:
+#           node-version: lts/*
+#       # - name: Install dependencies
+#       #   run: npm run install -g yarn@latest && yarn
+#       - name: Install dependencies
+#         run: npm install
+#       - name: Install Playwright Browsers
+#         run: npm run playwright install chromium
+#       - name: Download Email Address Artifact in Stage 2
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: email-address
+#           path: e2e/setup/
+#       - name: Cleanup Stage
+#         run: npm run e2e:cleanup
+#       - uses: actions/upload-artifact@v4
+#         if: ${{ !cancelled() }}
+#         with:
+#           name: playwright-report-stage3
+#           path: other-test-report
+#           retention-days: 30
+
+#   deploy_reports:
+#     runs-on: ubuntu-latest
+#     needs: stage3
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     steps:
+#       - name: Download Playwright Report Artifact from Stage 2
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: playwright-report-stage2 # The artifact name from stage2
+#           path: playwright-report/stage2 # Location to save the downloaded artifact
+#       - name: Download Playwright Report Artifact from Stage 1
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: playwright-report-stage1 # The artifact name from stage2
+#           path: playwright-report/stage1 # Location to save the downloaded artifact
+#       - name: Set up
+#         uses: actions/configure-pages@v2
+#       - name: upload artifacts
+#         uses: actions/upload-pages-artifact@v1
+#         with:
+#           path: |
+#             playwright-report/stage1
+#             playwright-report/stage2
+
+#       - name: Deploy to pages
+#         id: deployment
+#         uses: actions/deploy-pages@v1
+
 name: Playwright Tests
 on:
   push:
@@ -147,14 +294,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      # - name: Install dependencies
-      #   run: npm install -g yarn@latest && yarn
       - name: Install dependencies
-        run: npm install
+        run: npm install -g yarn && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Register User
-        run: npm run e2e:prepare
+        run: yarn e2e:prepare
       - name: Upload Email Address Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -178,24 +323,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-        # - name: Install dependencies
-        #   run: npm install -g yarn@latest && yarn
       - name: Install dependencies
-        run: npm install
+        run: npm install -g yarn && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
           name: email-address
           path: e2e/setup/
       - name: Run Tests
-        run: npm run test:e2e
+        run: yarn test:e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage2
-          path: test-report/
+          path: playwright-report/
           retention-days: 30
 
       # - name: Set up
@@ -221,29 +364,27 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      # - name: Install dependencies
-      #   run: npm run install -g yarn@latest && yarn
       - name: Install dependencies
-        run: npm install
+        run: npm install -g yarn && yarn
       - name: Install Playwright Browsers
-        run: npm run playwright install chromium
+        run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
           name: email-address
           path: e2e/setup/
       - name: Cleanup Stage
-        run: npm run e2e:cleanup
+        run: yarn e2e:cleanup
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage3
-          path: other-test-report
+          path: playwright-report/
           retention-days: 30
 
   deploy_reports:
     runs-on: ubuntu-latest
-    needs: stage3
+    needs: stage2
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -252,20 +393,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: playwright-report-stage2 # The artifact name from stage2
-          path: playwright-report/stage2 # Location to save the downloaded artifact
+          path: playwright-report/tests # Location to save the downloaded artifact
       - name: Download Playwright Report Artifact from Stage 1
         uses: actions/download-artifact@v4
         with:
           name: playwright-report-stage1 # The artifact name from stage2
-          path: playwright-report/stage1 # Location to save the downloaded artifact
+          path: playwright-report/prepare # Location to save the downloaded artifact
       - name: Set up
         uses: actions/configure-pages@v2
-      - name: upload artifacts
+      - name: apload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: |
-            playwright-report/stage1
-            playwright-report/stage2
+          path: playwright-report/
 
       - name: Deploy to pages
         id: deployment
