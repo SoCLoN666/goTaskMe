@@ -29,7 +29,7 @@ export function generateAndGetEmailAddress(): string {
 }
 
 function getGeneratedEmail(): string {
-  const tempFilePath = path.resolve(__dirname, "../temp.json");
+  const tempFilePath = path.resolve(__dirname, "../setup/temp.json");
 
   if (fs.existsSync(tempFilePath)) {
     const fileData = fs.readFileSync(tempFilePath, "utf-8");

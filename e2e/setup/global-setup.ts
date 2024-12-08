@@ -8,7 +8,7 @@ async function globalSetup() {
   const data = { email, password };
 
   // Save the data to a file
-  const tempFilePath = path.resolve(__dirname, "../temp.json");
+  const tempFilePath = path.resolve(__dirname, "../setup/temp.json");
   fs.writeFileSync(tempFilePath, JSON.stringify(data, null, 2));
 
   console.log(`Generated Email: ${email}`);
