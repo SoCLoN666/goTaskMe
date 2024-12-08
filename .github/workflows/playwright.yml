@@ -9,7 +9,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
   pages: write
   id-token: write
 
@@ -35,7 +34,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-stage1
+          name: regiser-user-stage
           path: playwright-report/
           retention-days: 30
 
@@ -54,7 +53,7 @@ jobs:
         run: npm install -g yarn@latest && yarn
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
-      - name: Download Email Address Artifact in Stage 2
+      - name: Download Email Address Artifact in e2e-tests-stage
         uses: actions/download-artifact@v4
         with:
           name: email-address
@@ -64,7 +63,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-stage2
+          name: playwright-report-e2e-tests-stage
           path: test-report/
           retention-days: 30
 
@@ -80,7 +79,7 @@ jobs:
         run: npm install -g yarn@latest && yarn
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
-      - name: Download Email Address Artifact in Stage 2
+      - name: Download Email Address Artifact in delete-user-stage
         uses: actions/download-artifact@v4
         with:
           name: email-address
@@ -90,7 +89,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-stage3
+          name: playwright-report-delete-user-stage
           path: setup-test-report
           retention-days: 30
 
@@ -112,7 +111,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: test-report/
-
       - name: Deploy to pages
         id: deployment
         uses: actions/deploy-pages@v1
