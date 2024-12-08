@@ -72,6 +72,7 @@ export default defineConfig({
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     // },
   ],
+  globalSetup: path.resolve(__dirname, "e2e/setup/global-setup.ts"),
 
   /* Run your local dev server before starting the tests */
   // webServer: {

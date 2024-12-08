@@ -8,8 +8,8 @@
     "@types/node": "^22.10.1"
   },
   "scripts": {
-    "e2e:prepare": "yarn && npx playwright test --grep @prep",
-    "e2e:cleanup": "yarn && npx playwright test --grep @cleanup",
-    "test:e2e": "yarn && npx playwright test --grep @test"
+    "e2e:prepare": "yarn && npx playwright test --grep @prep --config=playwright-setup.config.ts",
+    "e2e:cleanup": "yarn && npx playwright test --grep @cleanup --config=playwright.config.ts",
+    "test:e2e": "yarn && npx playwright test --grep @test --config=playwright.config.ts"
   }
 }
