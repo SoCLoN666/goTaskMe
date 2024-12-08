@@ -34,6 +34,7 @@ You can find there next folders:
 ### Configuration
 
 > **TO DO**: currently we have 2 configs and they have shared constuctions. We can create base-config for reusability and share it to the rest
+
 Framework configuration can be found in `playwright.config.ts`
 Most importants parts are:
 
