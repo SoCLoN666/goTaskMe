@@ -10,6 +10,6 @@
   "scripts": {
     "e2e:prepare": "yarn && npx playwright test --grep @prep --config=playwright-setup.config.ts",
     "e2e:cleanup": "yarn && npx playwright test --grep @cleanup --config=playwright.config.ts",
-    "test:e2e": "yarn && npx playwright test --grep @test --config=playwright.config.ts"
+    "test:e2e": "yarn && TEST_TAG=test npx playwright  test --grep @test --config=playwright.config.ts"
   }
 }

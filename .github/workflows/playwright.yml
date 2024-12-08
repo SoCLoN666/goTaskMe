@@ -191,7 +191,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage2
-          path: playwright-report/
+          path: test-report/
           retention-days: 30
 
       # - name: Set up
@@ -232,12 +232,12 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage3
-          path: playwright-report/stage3
+          path: other-test-report/
           retention-days: 30
 
   deploy_reports:
     runs-on: ubuntu-latest
-    needs: stage2
+    needs: stage3
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
