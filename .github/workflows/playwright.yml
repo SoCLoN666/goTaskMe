@@ -191,7 +191,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage2
-          path: playwright-report/stage2
+          path: playwright-report/
           retention-days: 30
 
       # - name: Set up
@@ -242,11 +242,11 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download Playwright Report Artifact from Stage 2
-        uses: actions/download-artifact@v4
-        with:
-          name: playwright-report-stage2 # The artifact name from stage2
-          path: playwright-report/stage2 # Location to save the downloaded artifact
+      # - name: Download Playwright Report Artifact from Stage 2
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: playwright-report-stage2 # The artifact name from stage2
+      #     path: playwright-report/stage2 # Location to save the downloaded artifact
       - name: Download Playwright Report Artifact from Stage 1
         uses: actions/download-artifact@v4
         with:
@@ -257,7 +257,9 @@ jobs:
       - name: upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: playwright-report/
+          path:
+            playwright-report/stage1
+            # playwright-report/stage2
 
       - name: Deploy to pages
         id: deployment
