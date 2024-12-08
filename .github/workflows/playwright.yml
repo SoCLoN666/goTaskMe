@@ -61,10 +61,7 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
       - name: Run Tests
-        run: |
-          EMAIL_ADDRESS=$(cat EMAIL_ADDRESS)
-          echo "Running tests with EMAIL_ADDRESS: $EMAIL_ADDRESS"
-          yarn e2e:test
+        run: yarn e2e:test
 
   stage3:
     runs-on: ubuntu-latest
