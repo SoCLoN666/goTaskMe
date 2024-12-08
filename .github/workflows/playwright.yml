@@ -196,7 +196,7 @@ jobs:
         id: deployment
         uses:
           actions/deploy-pages@v1
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # publish_dir: ./playwright-report
           # destination_dir: "one"
 
