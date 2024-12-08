@@ -164,6 +164,7 @@ jobs:
     needs: stage1
     permissions:
       id-token: write
+      pages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
