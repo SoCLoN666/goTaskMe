@@ -1,6 +1,3 @@
-import path from "path";
-import * as fs from "fs";
-
 export const EMAIL_ADDRESS = getGeneratedEmail();
 export const PASSWORD = "password123";
 
@@ -29,5 +26,7 @@ export function generateAndGetEmailAddress(): string {
 }
 
 function getGeneratedEmail(): string {
+  console.warn(process.env.EMAIL_ADDRESS);
+
   return process.env.EMAIL_ADDRESS;
 }
