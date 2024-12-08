@@ -7,6 +7,7 @@ export default defineConfig({
   forbidOnly: isCi,
   retries: isCi ? 2 : 0,
   testMatch: "*.spec-e2e.ts",
+  maxFailures: isCi ? 10 : undefined,
   workers: isCi ? 3 : undefined,
   reporter: [
     [

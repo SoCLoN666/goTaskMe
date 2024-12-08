@@ -4,7 +4,7 @@ import { CreateNewOrderKeywords } from "../keywords/create-new-order/create-new-
 import { NavigateKeywords } from "../keywords/navigate-to-app";
 import { ServiceTitlesTypes } from "../locators/create-new-order/service-stage-ids";
 
-export class CreateNewOrderOperationHandler {
+export class CreateNewOrderOperationsHandler {
   public constructor(protected readonly page: Page) {
     NavigateKeywords.setPage(page);
     CreateNewOrderKeywords.setPage(page);

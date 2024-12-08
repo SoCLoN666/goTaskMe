@@ -9,6 +9,7 @@ export default defineConfig({
   retries: isCi ? 2 : 0,
   testMatch: "*.spec-e2e.ts",
   workers: isCi ? 3 : undefined,
+  maxFailures: isCi ? 10 : undefined,
   reporter: "html",
   expect: {
     timeout: 30000,

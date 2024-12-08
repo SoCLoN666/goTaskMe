@@ -1,6 +1,5 @@
 import { test } from "e2e/core/fixtures/pages";
-import { AssertOperationHandler } from "e2e/core/operation-handlers/assert-operator";
-import { CustomerOrdersPageOperationsHandler } from "e2e/core/operation-handlers/orders-page-operators/customer-orders-page-operator1";
+import { AssertOperationsHandler } from "e2e/core/operation-handlers/assert-operator";
 import { OrdersDraftsPageOperationsHandler } from "e2e/core/operation-handlers/orders-page-operators/draft-orders-page-operator";
 import { EMAIL_ADDRESS, PASSWORD } from "e2e/utils/random-email-generator";
 
@@ -42,14 +41,12 @@ test.describe("draft order functional tests @test", () => {
       return newPage;
     });
 
-    const OrdersPageSecondTabOperator = new CustomerOrdersPageOperationsHandler(newPage);
-
     const DraftOrdersSecondPageOperator = new OrdersDraftsPageOperationsHandler(newPage);
 
-    const AssertOperatorSecondTab = new AssertOperationHandler(newPage);
+    const AssertOperatorSecondTab = new AssertOperationsHandler(newPage);
 
     await test.step("open draft orders page", async () => {
-      await OrdersPageSecondTabOperator.openPageOn("Drafts");
+      await DraftOrdersSecondPageOperator.openPage();
 
       AssertOperatorSecondTab.expectUrl.toContain("/draft");
     });

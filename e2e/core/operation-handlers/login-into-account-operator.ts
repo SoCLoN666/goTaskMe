@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 import { AuthPageKeywords } from "../keywords/auth-page";
 import { NavigateKeywords } from "../keywords/navigate-to-app";
 
-export class LoginIntoAccountOperationHander {
+export class LoginIntoAccountOperationsHander {
   public constructor(protected readonly page: Page) {
     NavigateKeywords.setPage(page);
     AuthPageKeywords.setPage(page);

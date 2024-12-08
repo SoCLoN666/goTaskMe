@@ -2,7 +2,7 @@ import { ExpectElementType, ExpectUrlType } from "e2e/core/types/assert-types";
 import { Locator, Page } from "@playwright/test";
 import { AssertKeywords } from "../keywords/verification/assert-keywords";
 
-export class AssertOperationHandler {
+export class AssertOperationsHandler {
   private assertKeywords: AssertKeywords;
 
   public constructor(protected readonly page: Page) {

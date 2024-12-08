@@ -1,36 +1,36 @@
 import { test as base } from "@playwright/test";
-import { AssertOperationHandler } from "../operation-handlers/assert-operator";
-import { CreateNewOrderOperationHandler } from "../operation-handlers/create-new-order-operator";
-import { LoginIntoAccountOperationHander } from "../operation-handlers/login-into-account-operator";
+import { AssertOperationsHandler } from "../operation-handlers/assert-operator";
+import { CreateNewOrderOperationsHandler } from "../operation-handlers/create-new-order-operator";
+import { LoginIntoAccountOperationsHander } from "../operation-handlers/login-into-account-operator";
 import { CustomerOrdersPageOperationsHandler } from "../operation-handlers/orders-page-operators/customer-orders-page-operator1";
 import { OrdersDraftsPageOperationsHandler } from "../operation-handlers/orders-page-operators/draft-orders-page-operator";
-import { RegisterAccountOperationHandler } from "../operation-handlers/register-account-operator";
+import { RegisterAccountOperationsHandler } from "../operation-handlers/register-account-operator";
 import { SecurityOperationsHandler } from "../operation-handlers/security-page";
 
 type Fixtures = {
-  RegisterAccountOperator: RegisterAccountOperationHandler;
-  LoginInAccountOperator: LoginIntoAccountOperationHander;
-  CreateNewOrderOperator: CreateNewOrderOperationHandler;
+  RegisterAccountOperator: RegisterAccountOperationsHandler;
+  LoginInAccountOperator: LoginIntoAccountOperationsHander;
+  CreateNewOrderOperator: CreateNewOrderOperationsHandler;
   DraftOrdersPageOperator: OrdersDraftsPageOperationsHandler;
   SecurityPageOperator: SecurityOperationsHandler;
-  AssertOperator: AssertOperationHandler;
+  AssertOperator: AssertOperationsHandler;
 };
 
 export const test = base.extend<Fixtures>({
   RegisterAccountOperator: async ({ page }, use) => {
-    const registerAccountOperator = new RegisterAccountOperationHandler(page);
+    const registerAccountOperator = new RegisterAccountOperationsHandler(page);
 
     await use(registerAccountOperator);
   },
 
   LoginInAccountOperator: async ({ page }, use) => {
-    const loginIntoAccountOperator = new LoginIntoAccountOperationHander(page);
+    const loginIntoAccountOperator = new LoginIntoAccountOperationsHander(page);
 
     await use(loginIntoAccountOperator);
   },
 
   CreateNewOrderOperator: async ({ page }, use) => {
-    const createNewOrderOperator = new CreateNewOrderOperationHandler(page);
+    const createNewOrderOperator = new CreateNewOrderOperationsHandler(page);
 
     await use(createNewOrderOperator);
   },
@@ -48,7 +48,7 @@ export const test = base.extend<Fixtures>({
   },
 
   AssertOperator: async ({ page }, use) => {
-    const assertOperator = new AssertOperationHandler(page);
+    const assertOperator = new AssertOperationsHandler(page);
 
     await use(assertOperator);
   },
