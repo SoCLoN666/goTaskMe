@@ -67,7 +67,7 @@ jobs:
           name: email-address
       - name: Run Tests
         run: |
-          EMAIL_ADDRESS=$(cat e2e/utils/random-email-generator/EMAIL_ADDRESS)
+          EMAIL_ADDRESS=$(cat EMAIL_ADDRESS)
           echo "Running tests with EMAIL_ADDRESS: $EMAIL_ADDRESS"
           yarn e2e:test --email "$EMAIL_ADDRESS"
 
@@ -82,4 +82,11 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Download Email Address Artifact
-        uses: actions/download-
+        uses: actions/download-artifact@v4
+        with:
+          name: email-address
+      - name: Cleanup Stage
+        run: |
+          EMAIL_ADDRESS=$(cat EMAIL_ADDRESS)
+          echo "Cleaning up resources for EMAIL_ADDRESS: $EMAIL_ADDRESS"
+          yarn e2e:cleanup --email "$EMAIL_ADDRESS"
