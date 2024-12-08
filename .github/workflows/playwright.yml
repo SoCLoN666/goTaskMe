@@ -240,10 +240,10 @@ jobs:
     needs: stage2
     steps:
       - name: Download Playwright Report Artifact from Stage 2
-      uses: actions/download-artifact@v4
-      with:
-        name: playwright-report-stage2  # The artifact name from stage2
-        path: playwright-report/  # Location to save the downloaded artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report-stage2 # The artifact name from stage2
+          path: playwright-report/ # Location to save the downloaded artifact
       - name: Set up
         uses: actions/configure-pages@v2
       - name: apload artifacts
