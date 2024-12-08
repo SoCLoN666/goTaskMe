@@ -185,12 +185,13 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      # - name: Push report to github pages
-      #   uses: actions/configure-pages@v2
-      # - name: apload artifacts
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     path: playwright-port
+      - name: Push report to github pages
+        uses: actions/configure-pages@v2
+      - name: apload artifacts
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: playwright-port
+
       - name: Deploy to pages
         id: deployment
         uses:
