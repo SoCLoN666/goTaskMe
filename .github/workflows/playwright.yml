@@ -75,7 +75,7 @@ jobs:
         with:
           node-version: lts/*
       - name: Install dependencies
-        run: npm run install -g yarn@latest && yarn
+        run: npm install -g yarn@latest && yarn
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
