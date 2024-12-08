@@ -131,10 +131,10 @@ jobs:
           # Copy the generated report to the gh-pages branch
           cp -r playwright-report/* gh-pages/
 
-          # Push the reports to the gh-pages branch
+          # Push the reports to the gh-pages branch with the GITHUB_TOKEN for authentication
           cd gh-pages
           git add .
           git commit -m "Deploy Playwright Test Reports"
-          git push origin gh-pages
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
