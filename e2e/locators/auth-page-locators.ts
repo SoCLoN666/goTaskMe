@@ -1,7 +1,11 @@
 import { Page } from "@playwright/test";
 
 export class AuthPagesIds {
-  public constructor(protected readonly page: Page) {}
+  page: Page;
+
+  public constructor(page: Page) {
+    this.page = page;
+  }
 
   public get common() {
     return {

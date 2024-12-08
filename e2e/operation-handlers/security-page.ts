@@ -1,17 +1,18 @@
-import { NavigateKeywords } from "@e2e-keywords/navigate-to-app";
-import { SettingsSecurityKeywords } from "@e2e-keywords/settings-page/settings-security-page";
+import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
+import { SettingsSecurityKeywords } from "e2e/keywords/settings-page/settings-security-page";
 import { Page } from "@playwright/test";
 
 export class SecurityOperationsHandler {
   private page: Page;
 
-  public constructor(page: Page, protected readonly navigateKeywords: NavigateKeywords) {
+  public constructor(page: Page) {
     this.page = page;
+    NavigateKeywords.setPage(page);
     SettingsSecurityKeywords.setPage(page);
   }
 
   public async openPage(waitUntil: "commit" | "load" = "load"): Promise<void> {
-    await this.navigateKeywords.openAppOn("/customer/user/settings/security", waitUntil);
+    await NavigateKeywords.openAppOn("/customer/user/settings/security", waitUntil);
     await SettingsSecurityKeywords.Ids.DeactivateAccountBtn.waitFor();
   }
 

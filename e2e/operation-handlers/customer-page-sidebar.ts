@@ -1,4 +1,4 @@
-import { SidebarKeywords } from "@e2e-keywords/sidebar-keywords";
+import { SidebarKeywords } from "e2e/keywords/sidebar-keywords";
 import { Page } from "@playwright/test";
 
 export class SidebarOperationsHandler {

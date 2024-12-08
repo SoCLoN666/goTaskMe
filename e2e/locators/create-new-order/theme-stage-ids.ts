@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { CreateNewOrderCommonIds } from "./create-new-order-common";
 
-export class CreateNewOrderThemeStageIds extends CreateNewOrderCommonIds {
+export class NewOrderThemeIds extends CreateNewOrderCommonIds {
   public constructor(protected readonly page: Page) {
     super(page);
   }

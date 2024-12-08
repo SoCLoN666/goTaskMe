@@ -4,7 +4,7 @@ import { PASSWORD } from "e2e/utils/random-email-generator";
 export class SettingsSecurityKeywords {
   private static page: Page;
 
-  public static setPage(page: Page) {
+  public static setPage(page: Page): void {
     SettingsSecurityKeywords.page = page;
   }
 
@@ -16,10 +16,6 @@ export class SettingsSecurityKeywords {
         name: "Next",
         exact: true,
       }),
-      // ConfirmDeactivationBtn: SettingsSecurityKeywords.page.locator(
-      //   '[class="ant-btn ant-btn-primary ant-btn-lg ng-star-inserted"]',
-      //   { hasText: "Deactivate" }
-      // ),
       ConfirmDeactivationBtn: SettingsSecurityKeywords.page.getByRole("button", {
         name: "Deactivate",
         exact: true,
@@ -29,7 +25,7 @@ export class SettingsSecurityKeywords {
 
   public static async selectDeactivateAccount(): Promise<void> {
     await this.Ids.DeactivateAccountBtn.waitFor();
-    await SettingsSecurityKeywords.page.waitForTimeout(500);
+    await SettingsSecurityKeywords.page.waitForTimeout(1000);
     await this.Ids.DeactivateAccountBtn.click({ force: true });
   }
 

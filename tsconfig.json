@@ -8,7 +8,7 @@
     "paths": {
       "@e2e-fixtures": ["e2e/fixtures/pages.ts"],
       "@e2e-keywords/*": ["e2e/keywords/*"],
-      "@e2e-keywords-operator/*": ["e2e/keyword-operators/*"]
+      "@e2e-keywords-operator/*": ["e2e/operation-handlers/*"]
     }
   },
   "include": ["**/*.ts"]

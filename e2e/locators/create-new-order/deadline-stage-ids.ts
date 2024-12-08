@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { CreateNewOrderCommonIds } from "./create-new-order-common";
 
-export class CreateNewOrderDeadlineStageIds extends CreateNewOrderCommonIds {
+export class NewOrderDeadlineIds extends CreateNewOrderCommonIds {
   public constructor(protected readonly page: Page) {
     super(page);
   }

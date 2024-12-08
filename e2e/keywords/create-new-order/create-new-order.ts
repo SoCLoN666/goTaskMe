@@ -1,79 +1,60 @@
 import { Page } from "@playwright/test";
-import { CreateNewOrderContentRequirementsComponentKeywords } from "./components/content-requirements-component";
-import { CreateNewOrderContentTypeComponentKeywords } from "./components/content-type-component";
-import { CreateNewOrderDeadlineComponentKeywords } from "./components/deadline-component";
-import { CreateNewOrderLanguageComponentKeywords } from "./components/language-component";
-import { CreateNewOrderConfirmationComponentKeywords } from "./components/order-confirmation-component";
-import { CreateNewOrderServiceComponentKeywords } from "./components/service-component";
-import { CreateNewOrderSizeComponentKeywords } from "./components/size-component";
-import { CreateNewOrderThemeComponentKeywords } from "./components/theme-component";
-import { CreateNewOrderTopicComponentKeywords } from "./components/topic-component";
+import { NewOrderContentRequirementsKeywords } from "./stages/content-requirements-stage";
+import { NewOrderContentTypeKeywords } from "./stages/content-type-stage";
+import { NewOrderDeadlineKeywords } from "./stages/deadline-stage";
+import { NewOrderLanguageKeywords } from "./stages/language-stage";
+import { NewOrderConfirmationKeywords } from "./stages/order-confirmation-stage";
+import { NewOrderServiceKeywords } from "./stages/service-stage";
+import { NewOrderSizeKeywords } from "./stages/size-stage";
+import { NewOrderThemeKeywords } from "./stages/theme-stage";
+import { NewOrderTopicKeywords } from "./stages/topic-stage";
 
 export class CreateNewOrderKeywords {
-  private contentTypeStageComponent: CreateNewOrderContentTypeComponentKeywords;
+  private static page: Page;
 
-  private serviceStageComponent: CreateNewOrderServiceComponentKeywords;
-
-  private languageStageComponent: CreateNewOrderLanguageComponentKeywords;
-
-  private sizeStageComponent: CreateNewOrderSizeComponentKeywords;
-
-  private deadlineStageComponent: CreateNewOrderDeadlineComponentKeywords;
-
-  private topicStageComponent: CreateNewOrderTopicComponentKeywords;
-
-  private themeStageComponent: CreateNewOrderThemeComponentKeywords;
-
-  private contentRequirementsStageComponent: CreateNewOrderContentRequirementsComponentKeywords;
-
-  private confirmationStageComponent: CreateNewOrderConfirmationComponentKeywords;
-
-  public constructor(protected readonly page: Page) {}
-
-  public get contentTypeStage(): CreateNewOrderContentTypeComponentKeywords {
-    return (this.contentTypeStageComponent =
-      this.contentTypeStageComponent ?? new CreateNewOrderContentTypeComponentKeywords(this.page));
+  public static setPage(page: Page) {
+    CreateNewOrderKeywords.page = page;
   }
 
-  public get serviceStage(): CreateNewOrderServiceComponentKeywords {
-    return (this.serviceStageComponent =
-      this.serviceStageComponent ?? new CreateNewOrderServiceComponentKeywords(this.page));
+  private static initializeStage<T>(stage: T): T {
+    (stage as any).setPage(CreateNewOrderKeywords.page);
+
+    return stage;
   }
 
-  public get languageStage(): CreateNewOrderLanguageComponentKeywords {
-    return (this.languageStageComponent =
-      this.languageStageComponent ?? new CreateNewOrderLanguageComponentKeywords(this.page));
+  public static get ContentTypeStage(): typeof NewOrderContentTypeKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderContentTypeKeywords);
   }
 
-  public get sizeStage(): CreateNewOrderSizeComponentKeywords {
-    return (this.sizeStageComponent =
-      this.sizeStageComponent ?? new CreateNewOrderSizeComponentKeywords(this.page));
+  public static get ServiceStage(): typeof NewOrderServiceKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderServiceKeywords);
   }
 
-  public get deadlineStage(): CreateNewOrderDeadlineComponentKeywords {
-    return (this.deadlineStageComponent =
-      this.deadlineStageComponent ?? new CreateNewOrderDeadlineComponentKeywords(this.page));
+  public static get LanguageStage(): typeof NewOrderLanguageKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderLanguageKeywords);
   }
 
-  public get topicStage(): CreateNewOrderTopicComponentKeywords {
-    return (this.topicStageComponent =
-      this.topicStageComponent ?? new CreateNewOrderTopicComponentKeywords(this.page));
+  public static get SizeStage(): typeof NewOrderSizeKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderSizeKeywords);
   }
 
-  public get themeStage(): CreateNewOrderThemeComponentKeywords {
-    return (this.themeStageComponent =
-      this.themeStageComponent ?? new CreateNewOrderThemeComponentKeywords(this.page));
+  public static get DeadlineStage(): typeof NewOrderDeadlineKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderDeadlineKeywords);
   }
 
-  public get contentRequirementsStage(): CreateNewOrderContentRequirementsComponentKeywords {
-    return (this.contentRequirementsStageComponent =
-      this.contentRequirementsStageComponent ??
-      new CreateNewOrderContentRequirementsComponentKeywords(this.page));
+  public static get TopicStage(): typeof NewOrderTopicKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderTopicKeywords);
   }
 
-  public get confirmationStage(): CreateNewOrderConfirmationComponentKeywords {
-    return (this.confirmationStageComponent =
-      this.confirmationStageComponent ??
-      new CreateNewOrderConfirmationComponentKeywords(this.page));
+  public static get ThemeStage(): typeof NewOrderThemeKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderThemeKeywords);
+  }
+
+  public static get ContentRequirementsStage(): typeof NewOrderContentRequirementsKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderContentRequirementsKeywords);
+  }
+
+  public static get ConfirmationStage(): typeof NewOrderConfirmationKeywords {
+    return CreateNewOrderKeywords.initializeStage(NewOrderConfirmationKeywords);
   }
 }
