@@ -94,9 +94,9 @@ jobs:
           path: setup-test-report
           retention-days: 30
 
-  delete-user-stage:
+  deploy-reports:
     runs-on: ubuntu-latest
-    needs: e2e-tests-stage
+    needs: delete-user-stage
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
