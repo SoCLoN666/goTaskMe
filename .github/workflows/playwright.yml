@@ -149,6 +149,8 @@ jobs:
           node-version: lts/*
       # - name: Install dependencies
       #   run: npm install -g yarn@latest && yarn
+      - name: Install dependencies
+        run: npm install
       - name: Install Playwright Browsers
         run: npm run playwright install chromium
       - name: Register User
@@ -178,6 +180,8 @@ jobs:
           node-version: lts/*
         # - name: Install dependencies
         #   run: npm install -g yarn@latest && yarn
+      - name: Install dependencies
+        run: npm install
       - name: Install Playwright Browsers
         run: npm run playwright install chromium
       - name: Download Email Address Artifact in Stage 2
@@ -219,6 +223,8 @@ jobs:
           node-version: lts/*
       # - name: Install dependencies
       #   run: npm run install -g yarn@latest && yarn
+      - name: Install dependencies
+        run: npm install
       - name: Install Playwright Browsers
         run: npm run playwright install chromium
       - name: Download Email Address Artifact in Stage 2
