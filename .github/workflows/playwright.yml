@@ -47,11 +47,6 @@ jobs:
         run: yarn playwright install chromium
       - name: Register User
         run: yarn e2e:prepare
-      - name: Upload Email Address Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: email-address
-          path: e2e/utils/random-email-generator/
 
   stage2:
     runs-on: ubuntu-latest
@@ -65,15 +60,11 @@ jobs:
         run: npm install -g yarn && yarn
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
-      - name: Download Email Address Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: email-address
       - name: Run Tests
         run: |
           EMAIL_ADDRESS=$(cat EMAIL_ADDRESS)
           echo "Running tests with EMAIL_ADDRESS: $EMAIL_ADDRESS"
-          yarn e2e:test --email "$EMAIL_ADDRESS"
+          yarn e2e:test
 
   stage3:
     runs-on: ubuntu-latest
