@@ -94,7 +94,7 @@ jobs:
           path: setup-test-report
           retention-days: 30
 
-  deploy-reports:
+  delete-user-stage:
     runs-on: ubuntu-latest
     needs: e2e-tests-stage
     environment:
