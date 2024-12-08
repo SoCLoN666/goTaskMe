@@ -194,22 +194,20 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-      - name: Set up
-        uses: actions/configure-pages@v2
-      - name: apload artifacts
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: playwright-report/
+      # - name: Set up
+      #   uses: actions/configure-pages@v2
+      # - name: apload artifacts
+      #   uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: playwright-report/
 
-      - name: Deploy to pages
-        id: deployment
-        environment:
-          name: github-pages
-          url: ${{ steps.deployment.outputs.page_url }}
-        uses:
-          actions/deploy-pages@v1
-          # publish_dir: ./playwright-report
-          # destination_dir: "one"
+      # - name: Deploy to pages
+      #   id: deployment
+      #   uses:
+      #     actions/deploy-pages@v1
+
+      # - name: Output Deployed URL
+      # run: echo "Deployed site URL: ${{ steps.deployment.outputs.page_url }}"
 
   stage3:
     runs-on: ubuntu-latest
@@ -237,37 +235,22 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  # deploy:
-  #   needs: stage3
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v4
-  #     - name: Setup Pages
-  #       uses: actions/configure-pages@v5
-  #     - name: Upload artifact
-  #       uses: actions/upload-pages-artifact@v3
-  #       with:
-  #         # Upload entire repository
-  #         path: "."
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4
+  deploy_reports:
+    runs-on: ubuntu-latest
+    needs: stage2
+    steps:
+      - name: Download Playwright Report Artifact from Stage 2
+      uses: actions/download-artifact@v4
+      with:
+        name: playwright-report-stage2  # The artifact name from stage2
+        path: playwright-report/  # Location to save the downloaded artifact
+      - name: Set up
+        uses: actions/configure-pages@v2
+      - name: apload artifacts
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: playwright-report/
 
-  # deploy_reports:
-  #   runs-on: ubuntu-latest
-  #   needs: stage3
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Install dependencies
-  #       run: |
-  #         npm install -g yarn
-  #         yarn install
-  #     - name: Deploy Playwright Reports to GitHub Pages
-  #       uses: peaceiris/actions-gh-pages@v3
-  #       with:
-  #         github_token: ${{ secrets.GITHUB_TOKEN }}
-  #         publish_dir: playwright-report # Deploy the Playwright report folder
+      - name: Deploy to pages
+        id: deployment
+        uses: actions/deploy-pages@v1
