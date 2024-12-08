@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  stage1:
+  regiser-user-stage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,21 +37,21 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  stage2:
+  e2e-tests-stage:
     runs-on: ubuntu-latest
-    needs: stage1
+    needs: regiser-user-stage
     permissions:
       id-token: write
       pages: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: Install dependencies
-        run: npm install -g yarn@latest && yarn
-      - name: Install Playwright Browsers
-        run: yarn playwright install chromium
+      # - uses: actions/checkout@v4
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: lts/*
+      # - name: Install dependencies
+      #   run: npm install -g yarn@latest && yarn
+      # - name: Install Playwright Browsers
+      #   run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
@@ -66,35 +66,35 @@ jobs:
           path: test-report/
           retention-days: 30
 
-  stage3:
-    runs-on: ubuntu-latest
-    needs: stage2
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: Install dependencies
-        run: npm install -g yarn@latest && yarn
-      - name: Install Playwright Browsers
-        run: yarn playwright install chromium
-      - name: Download Email Address Artifact in Stage 2
-        uses: actions/download-artifact@v4
-        with:
-          name: email-address
-          path: e2e/setup/
-      - name: Cleanup Stage
-        run: yarn e2e:cleanup
-      - uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-report-stage3
-          path: other-test-report
-          retention-days: 30
+  delete-user-stage:
+    # runs-on: ubuntu-latest
+    # needs: e2e-tests-stage
+    # steps:
+    #   - uses: actions/checkout@v4
+    #   - uses: actions/setup-node@v4
+    #     with:
+    #       node-version: lts/*
+    #   - name: Install dependencies
+    #     run: npm install -g yarn@latest && yarn
+    #   - name: Install Playwright Browsers
+    #     run: yarn playwright install chromium
+    - name: Download Email Address Artifact in Stage 2
+      uses: actions/download-artifact@v4
+      with:
+        name: email-address
+        path: e2e/setup/
+    - name: Cleanup Stage
+      run: yarn e2e:cleanup
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report-stage3
+        path: other-test-report
+        retention-days: 30
 
   deploy_reports:
     runs-on: ubuntu-latest
-    needs: stage3
+    needs: regiser-user-stage
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
