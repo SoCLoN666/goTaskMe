@@ -5,7 +5,7 @@ import { AssertOperationHandler } from "e2e/operation-handlers/assert-operator";
 import { CreateNewOrderOperationHandler } from "e2e/operation-handlers/create-new-order-operator";
 import { OrdersDraftsPageOperationsHandler } from "e2e/operation-handlers/orders-page-operators/draft-orders-page-operator";
 
-test("create draft order", async ({
+test("create draft order @test", async ({
   CreateNewOrderOperator,
   LoginInAccountOperator,
   OrdersPageOperator,

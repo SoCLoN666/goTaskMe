@@ -8,8 +8,8 @@
     "@types/node": "^22.10.1"
   },
   "scripts": {
-    "e2e:prepare": "playwright install chromium && yarn && npx playwright test --grep @prep",
-    "e2e:cleanup": "playwright install chromium && yarn && npx playwright test --grep @cleanup",
-    "test:e2e": "yarn e2e:prepare && playwright install chromium && yarn && npx playwright test && yarn e2e:cleanup"
+    "e2e:prepare": "yarn && npx playwright test --grep @prep",
+    "e2e:cleanup": "yarn && npx playwright test --grep @cleanup",
+    "test:e2e": "yarn && npx playwright test --grep @test"
   }
 }

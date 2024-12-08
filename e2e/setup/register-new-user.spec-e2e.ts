@@ -1,8 +1,6 @@
 import { test } from "@e2e-fixtures";
 import { EMAIL_ADDRESS, PASSWORD } from "e2e/utils/random-email-generator";
 
-test.describe.configure({ mode: "serial" });
-
 /**
  * This method should be called before test execution, because we need to create a user beforehand
  */

@@ -11,5 +11,5 @@
       "@e2e-keywords-operator/*": ["e2e/operation-handlers/*"]
     }
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "e2e/tests/create-draft-order.spec-e2e.ts"]
 }
