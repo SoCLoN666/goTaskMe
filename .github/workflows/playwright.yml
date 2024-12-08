@@ -123,5 +123,6 @@ jobs:
       - name: Deploy Playwright Reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
-          folder: playwright-report
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Correct input field
+          publish_dir: playwright-report # Correct input for the folder to deploy
+
