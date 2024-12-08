@@ -112,16 +112,16 @@ jobs:
           retention-days: 30
 
   deploy_reports:
-  runs-on: ubuntu-latest
-  needs: stage3
-  steps:
-    - uses: actions/checkout@v4
-    - name: Install dependencies
-      run: |
-        npm install -g yarn
-        yarn install
-    - name: Deploy Playwright Reports to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        gh_token: ${{ secrets.GITHUB_TOKEN }}
-        folder: playwright-report
+    runs-on: ubuntu-latest
+    needs: stage3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+      - name: Deploy Playwright Reports to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          folder: playwright-report
