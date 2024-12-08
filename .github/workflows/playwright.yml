@@ -121,7 +121,7 @@ jobs:
 
     # Deploy the Pages site
   deploy:
-    needs: test
+    needs: stage3
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
