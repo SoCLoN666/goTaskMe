@@ -1,4 +1,7 @@
-export const EMAIL_ADDRESS = generateAndGetEmailAddress();
+import path from "path";
+import * as fs from "fs";
+
+export const EMAIL_ADDRESS = getGeneratedEmail();
 export const PASSWORD = "password123";
 
 function generateEmailId(): string {
@@ -23,4 +26,8 @@ export function generateAndGetEmailAddress(): string {
   const emailAddress = emailId + "@" + emailDomail + ".com";
 
   return emailAddress;
+}
+
+function getGeneratedEmail(): string {
+  return process.env.EMAIL_ADDRESS;
 }
