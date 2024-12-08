@@ -1,6 +1,6 @@
-import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
-import { SettingsSecurityKeywords } from "e2e/keywords/settings-page/settings-security-page";
 import { Page } from "@playwright/test";
+import { NavigateKeywords } from "../keywords/navigate-to-app";
+import { SettingsSecurityKeywords } from "../keywords/settings-page/settings-security-page";
 
 export class SecurityOperationsHandler {
   private page: Page;

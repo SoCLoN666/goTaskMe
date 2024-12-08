@@ -1,7 +1,7 @@
-import { MyOrdersPageKeywords } from "@e2e-keywords/my-orders-page";
-import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
-import { SidebarKeywords } from "e2e/keywords/sidebar-keywords";
 import { Page } from "@playwright/test";
+import { MyOrdersPageKeywords } from "e2e/core/keywords/my-orders-page";
+import { NavigateKeywords } from "e2e/core/keywords/navigate-to-app";
+import { SidebarKeywords } from "e2e/core/keywords/sidebar-keywords";
 import { OrderType } from "e2e/core/types/create-order-types";
 
 export class CustomerOrdersPageOperationsHandler {

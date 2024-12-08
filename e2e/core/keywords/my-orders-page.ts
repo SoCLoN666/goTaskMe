@@ -1,5 +1,5 @@
 import { Locator, Page } from "@playwright/test";
-import { MyOrdersPageIds } from "e2e/locators/my-orders-page-locators";
+import { MyOrdersPageIds } from "../locators/my-orders-page-locators";
 
 export class MyOrdersPageKeywords {
   public static Ids: MyOrdersPageIds;

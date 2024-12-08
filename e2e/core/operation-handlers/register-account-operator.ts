@@ -1,6 +1,6 @@
-import { AuthPageKeywords } from "@e2e-keywords/auth-page";
 import { Page } from "@playwright/test";
-import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
+import { AuthPageKeywords } from "../keywords/auth-page";
+import { NavigateKeywords } from "../keywords/navigate-to-app";
 
 export class RegisterAccountOperationHandler {
   public constructor(protected readonly page: Page) {

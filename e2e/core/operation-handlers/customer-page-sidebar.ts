@@ -1,5 +1,5 @@
-import { SidebarKeywords } from "e2e/keywords/sidebar-keywords";
 import { Page } from "@playwright/test";
+import { SidebarKeywords } from "../keywords/sidebar-keywords";
 
 export class SidebarOperationsHandler {
   public constructor(
