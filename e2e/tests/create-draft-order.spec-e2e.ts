@@ -12,6 +12,8 @@ test("create draft order @test", async ({
   AssertOperator,
   page,
 }) => {
+  console.warn(EMAIL_ADDRESS);
+
   await LoginInAccountOperator.openPage();
   await LoginInAccountOperator.loginIntoAccount(EMAIL_ADDRESS, PASSWORD);
   await OrdersPageOperator.selectAddNewOrder();
