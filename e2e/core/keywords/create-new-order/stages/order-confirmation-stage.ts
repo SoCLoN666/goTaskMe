@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderConfirmationIds } from "e2e/locators/create-new-order/order-confirmation-stage-ids";
+import { NewOrderConfirmationIds } from "e2e/core/locators/create-new-order/order-confirmation-stage-ids";
 
 export class NewOrderConfirmationKeywords {
   public static Ids: NewOrderConfirmationIds;

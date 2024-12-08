@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderContentRequirementsIds } from "e2e/locators/create-new-order/content-requirements-stage-ids";
+import { NewOrderContentRequirementsIds } from "e2e/core/locators/create-new-order/content-requirements-stage-ids";
 
 export class NewOrderContentRequirementsKeywords {
   private static page: Page;

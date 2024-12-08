@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderSizeIds } from "e2e/locators/create-new-order/size-stage-ids";
+import { NewOrderSizeIds } from "e2e/core/locators/create-new-order/size-stage-ids";
 
 export class NewOrderSizeKeywords {
   private static Ids: NewOrderSizeIds;

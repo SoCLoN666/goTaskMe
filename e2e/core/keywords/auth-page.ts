@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { AuthPagesIds } from "e2e/locators/auth-page-locators";
+import { AuthPagesIds } from "../locators/auth-page-locators";
 
 export class AuthPageKeywords {
   public static Ids: AuthPagesIds;

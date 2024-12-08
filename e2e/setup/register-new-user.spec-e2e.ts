@@ -1,4 +1,4 @@
-import { test } from "@e2e-fixtures";
+import { test } from "e2e/core/fixtures/pages";
 import { EMAIL_ADDRESS, PASSWORD } from "e2e/utils/random-email-generator";
 
 /**

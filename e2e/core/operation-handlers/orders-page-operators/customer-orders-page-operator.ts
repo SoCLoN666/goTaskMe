@@ -2,7 +2,7 @@ import { MyOrdersPageKeywords } from "@e2e-keywords/my-orders-page";
 import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
 import { SidebarKeywords } from "e2e/keywords/sidebar-keywords";
 import { Page } from "@playwright/test";
-import { OrderType } from "e2e/types/create-order-types";
+import { OrderType } from "e2e/core/types/create-order-types";
 
 export class CustomerOrdersPageOperationsHandler {
   public constructor(protected readonly page: Page) {

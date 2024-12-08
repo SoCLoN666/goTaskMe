@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderContentTypeIds } from "e2e/locators/create-new-order/content-type-stage-ids";
+import { NewOrderContentTypeIds } from "e2e/core/locators/create-new-order/content-type-stage-ids";
 
 export class NewOrderContentTypeKeywords {
   public static Ids: NewOrderContentTypeIds;

@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderDeadlineIds } from "e2e/locators/create-new-order/deadline-stage-ids";
+import { NewOrderDeadlineIds } from "e2e/core/locators/create-new-order/deadline-stage-ids";
 
 export class NewOrderDeadlineKeywords {
   public static Ids: NewOrderDeadlineIds;

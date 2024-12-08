@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-import { ExpectElementType, ExpectUrlType } from "e2e/types/assert-types";
+import { ExpectElementType, ExpectUrlType } from "e2e/core/types/assert-types";
 
 export class AssertKeywords {
   public constructor(protected readonly page: Page) {}

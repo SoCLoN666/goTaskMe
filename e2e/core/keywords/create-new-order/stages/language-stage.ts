@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { NewOrderLanguageIds } from "e2e/locators/create-new-order/language-stage-ids";
-import { NewOrderLanguageTitleType } from "e2e/types/create-order-types";
+import { NewOrderLanguageTitleType } from "e2e/core/types/create-order-types";
 
 export class NewOrderLanguageKeywords {
   public static Ids: NewOrderLanguageIds;

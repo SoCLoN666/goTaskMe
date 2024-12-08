@@ -1,11 +1,11 @@
 import { test as base } from "@playwright/test";
-import { RegisterAccountOperationHandler } from "e2e/operation-handlers/register-account-operator";
-import { AssertOperationHandler } from "e2e/operation-handlers/assert-operator";
-import { CreateNewOrderOperationHandler } from "e2e/operation-handlers/create-new-order-operator";
-import { LoginIntoAccountOperationHander } from "e2e/operation-handlers/login-into-account-operator";
-import { CustomerOrdersPageOperationsHandler } from "e2e/operation-handlers/orders-page-operators/customer-orders-page-operator";
-import { OrdersDraftsPageOperationsHandler } from "e2e/operation-handlers/orders-page-operators/draft-orders-page-operator";
-import { SecurityOperationsHandler } from "e2e/operation-handlers/security-page";
+import { AssertOperationHandler } from "../operation-handlers/assert-operator";
+import { CreateNewOrderOperationHandler } from "../operation-handlers/create-new-order-operator";
+import { LoginIntoAccountOperationHander } from "../operation-handlers/login-into-account-operator";
+import { CustomerOrdersPageOperationsHandler } from "../operation-handlers/orders-page-operators/customer-orders-page-operator";
+import { OrdersDraftsPageOperationsHandler } from "../operation-handlers/orders-page-operators/draft-orders-page-operator";
+import { RegisterAccountOperationHandler } from "../operation-handlers/register-account-operator";
+import { SecurityOperationsHandler } from "../operation-handlers/security-page";
 
 type Fixtures = {
   RegisterAccountOperator: RegisterAccountOperationHandler;

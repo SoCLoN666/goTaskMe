@@ -1,5 +1,5 @@
 import { AssertKeywords } from "e2e/keywords/verification/assert-keywords";
-import { ExpectElementType, ExpectUrlType } from "e2e/types/assert-types";
+import { ExpectElementType, ExpectUrlType } from "e2e/core/types/assert-types";
 import { Locator, Page } from "@playwright/test";
 
 export class AssertOperationHandler {

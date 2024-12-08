@@ -1,9 +1,9 @@
-import { test } from "@e2e-fixtures";
+import { test } from "e2e/core/fixtures/pages";
+import { AssertOperationHandler } from "e2e/core/operation-handlers/assert-operator";
+import { CreateNewOrderOperationHandler } from "e2e/core/operation-handlers/create-new-order-operator";
+import { CustomerOrdersPageOperationsHandler } from "e2e/core/operation-handlers/orders-page-operators/customer-orders-page-operator";
+import { OrdersDraftsPageOperationsHandler } from "e2e/core/operation-handlers/orders-page-operators/draft-orders-page-operator";
 import { EMAIL_ADDRESS, PASSWORD } from "e2e/utils/random-email-generator";
-import { CustomerOrdersPageOperationsHandler } from "e2e/operation-handlers/orders-page-operators/customer-orders-page-operator";
-import { AssertOperationHandler } from "e2e/operation-handlers/assert-operator";
-import { CreateNewOrderOperationHandler } from "e2e/operation-handlers/create-new-order-operator";
-import { OrdersDraftsPageOperationsHandler } from "e2e/operation-handlers/orders-page-operators/draft-orders-page-operator";
 
 test("create draft order @test", async ({
   CreateNewOrderOperator,

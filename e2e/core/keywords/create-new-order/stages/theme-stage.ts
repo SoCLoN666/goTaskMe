@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderThemeIds } from "e2e/locators/create-new-order/theme-stage-ids";
+import { NewOrderThemeIds } from "e2e/core/locators/create-new-order/theme-stage-ids";
 
 export class NewOrderThemeKeywords {
   private static page: Page;

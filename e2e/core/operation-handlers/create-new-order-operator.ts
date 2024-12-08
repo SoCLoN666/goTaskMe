@@ -2,7 +2,7 @@ import { CreateNewOrderKeywords } from "e2e/keywords/create-new-order/create-new
 import { NavigateKeywords } from "e2e/keywords/navigate-to-app";
 import { Page } from "@playwright/test";
 import { ServiceTitlesTypes } from "e2e/locators/create-new-order/service-stage-ids";
-import { NewOrderLanguageTitleType } from "e2e/types/create-order-types";
+import { NewOrderLanguageTitleType } from "e2e/core/types/create-order-types";
 
 export class CreateNewOrderOperationHandler {
   public constructor(protected readonly page: Page) {

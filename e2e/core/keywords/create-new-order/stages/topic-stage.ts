@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { NewOrderTopicIds } from "e2e/locators/create-new-order/topic-stage-ids";
+import { NewOrderTopicIds } from "e2e/core/locators/create-new-order/topic-stage-ids";
 
 export class NewOrderTopicKeywords {
   public static Ids: NewOrderTopicIds;

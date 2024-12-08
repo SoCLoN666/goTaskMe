@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { SidebarIds } from "e2e/locators/sidebar-locators";
+import { SidebarIds } from "../locators/sidebar-locators";
 
 export class SidebarKeywords {
   public static Ids: SidebarIds;

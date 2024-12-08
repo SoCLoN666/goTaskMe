@@ -1,6 +1,6 @@
-import { MyOrdersPageKeywords } from "@e2e-keywords/my-orders-page";
 import { Page } from "@playwright/test";
-import { MyOrdersPageIds } from "e2e/locators/my-orders-page-locators";
+import { MyOrdersPageKeywords } from "e2e/core/keywords/my-orders-page";
+import { MyOrdersPageIds } from "e2e/core/locators/my-orders-page-locators";
 
 export class OrdersDraftsPageOperationsHandler {
   public constructor(protected readonly page: Page) {
