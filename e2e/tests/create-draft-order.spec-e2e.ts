@@ -32,11 +32,11 @@ test("create draft order @test", async ({
     });
   });
 
-  await test.step('validate error appear')
+  await test.step("validate error appear", async () => {
+    const confirmationError = CreateNewOrderOperator.Stage.ConfirmationStage.Ids.confirmationError;
 
-  const confirmationError = CreateNewOrderOperator.Stage.ConfirmationStage.Ids.confirmationError;
-
-  await AssertOperator.expectElement(confirmationError).toBeVisible();
+    await AssertOperator.expectElement(confirmationError).toBeVisible();
+  });
 
   const newPage = await page.context().newPage();
 
