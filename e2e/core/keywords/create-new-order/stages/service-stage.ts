@@ -2,7 +2,7 @@ import { Page } from "@playwright/test";
 import {
   NewOrderServiceIds,
   ServiceTitlesTypes,
-} from "e2e/locators/create-new-order/service-stage-ids";
+} from "e2e/core/locators/create-new-order/service-stage-ids";
 
 export class NewOrderServiceKeywords {
   public static Ids: NewOrderServiceIds;
