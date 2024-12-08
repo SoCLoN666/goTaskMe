@@ -33,7 +33,7 @@ You can find there next folders:
 
 ### Configuration
 
-<span style="color: green;">// TO DO: currently we have 2 configs and they have shared constuctions. We can create base-config for reusability and share it to the rest</span>
+> **TO DO**: currently we have 2 configs and they have shared constuctions. We can create base-config for reusability and share it to the rest
 Framework configuration can be found in `playwright.config.ts`
 Most importants parts are:
 
@@ -155,7 +155,7 @@ test.describe("draft order functional tests @test", () => {
 - getter for all Locators are called Ids and is written from capital letter for better visibility
 - all static Keywords should have Keywords ending, like DraftOrdersKeywords, etc
 - all Keyword Operators should have OperationHandler in the ending
-- <span style="color: green;">TO DO: this list can go on</span>
+- > **TO DO**: this list can go on
 
 ### Organizing Test Cases
 
