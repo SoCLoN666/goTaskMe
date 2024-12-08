@@ -27,21 +27,21 @@ export class CreateNewOrderOperationHandler {
     theme: string;
     contentRequirements: string;
   }): Promise<void> {
-    await CreateNewOrderKeywords.ContentTypeStage.selectContentType(options.contentType);
-    await CreateNewOrderKeywords.ServiceStage.selectService(options.service);
-    await CreateNewOrderKeywords.LanguageStage.selectLanguage(options.language);
-    await CreateNewOrderKeywords.SizeStage.changeNumberOfSlidesTo(options.numberOfSlides);
-    await CreateNewOrderKeywords.SizeStage.goNext();
-    await CreateNewOrderKeywords.DeadlineStage.selectDateAndTime();
-    await CreateNewOrderKeywords.DeadlineStage.goNext();
-    await CreateNewOrderKeywords.TopicStage.fillTopicName(options.topicName);
-    await CreateNewOrderKeywords.TopicStage.goNext();
-    await CreateNewOrderKeywords.ThemeStage.chooseYourTheme(options.theme);
-    await CreateNewOrderKeywords.ContentRequirementsStage.fillContentRequirements(
+    await CreateNewOrderKeywords.ContentType.selectContentType(options.contentType);
+    await CreateNewOrderKeywords.Service.selectService(options.service);
+    await CreateNewOrderKeywords.Language.selectLanguage(options.language);
+    await CreateNewOrderKeywords.Size.changeNumberOfSlidesTo(options.numberOfSlides);
+    await CreateNewOrderKeywords.Size.goNext();
+    await CreateNewOrderKeywords.Deadline.selectDateAndTime();
+    await CreateNewOrderKeywords.Deadline.goNext();
+    await CreateNewOrderKeywords.Topic.fillTopicName(options.topicName);
+    await CreateNewOrderKeywords.Topic.goNext();
+    await CreateNewOrderKeywords.Theme.chooseYourTheme(options.theme);
+    await CreateNewOrderKeywords.ContentRequirements.fillContentRequirements(
       options.contentRequirements
     );
-    await CreateNewOrderKeywords.ContentRequirementsStage.goNext();
-    await CreateNewOrderKeywords.ConfirmationStage.confirm();
+    await CreateNewOrderKeywords.ContentRequirements.goNext();
+    await CreateNewOrderKeywords.Confirmation.confirm();
   }
 
   public async closeDraft(): Promise<void> {

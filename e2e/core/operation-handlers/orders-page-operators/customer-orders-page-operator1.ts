@@ -6,7 +6,7 @@ import { MyOrdersPageIds } from "e2e/core/locators/my-orders-page-locators";
 import { OrderType } from "e2e/core/types/create-order-types";
 import { WaitUntilType } from "e2e/core/types/wait-until";
 
-export abstract class CustomerOrdersPageOperationsHandler {
+export class CustomerOrdersPageOperationsHandler {
   public constructor(protected readonly page: Page) {
     NavigateKeywords.setPage(page);
     SidebarKeywords.setPage(page);
@@ -17,7 +17,7 @@ export abstract class CustomerOrdersPageOperationsHandler {
     return MyOrdersPageKeywords.Ids;
   }
 
-  protected async openPageOn(orderType: OrderType, waitUntil: WaitUntilType = "load") {
+  public async openPageOn(orderType: OrderType, waitUntil: WaitUntilType = "load") {
     const orderTypePath = this.getPathBasedOnOrderType(orderType);
     NavigateKeywords.openAppOn(`/customer/orders${orderTypePath}`, waitUntil);
 
@@ -35,11 +35,11 @@ export abstract class CustomerOrdersPageOperationsHandler {
     }
   }
 
-  protected async selectAddNewOrder(): Promise<void> {
+  public async selectAddNewOrder(): Promise<void> {
     await MyOrdersPageKeywords.selectAddNewOrder();
   }
 
-  protected async openOrder(topic: string, idx = 0): Promise<void> {
+  public async openOrder(topic: string, idx = 0): Promise<void> {
     await MyOrdersPageKeywords.openOrder(topic, idx);
   }
 }

@@ -24,12 +24,12 @@ jobs:
       - name: Install Playwright Browsers
         run: yarn playwright install chromium
       - name: Register User
-        run: yarn e2e:prepare
+        run: yarn e2e:setup
       - name: Upload Email Address Artifact
         uses: actions/upload-artifact@v4
         with:
           name: email-address
-          path: e2e/setup/temp.json
+          path: e2e/setup/temp/temp.json
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -48,17 +48,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      # - name: Install dependencies
-      #   run: npm install -g yarn@latest && yarn
-      # - name: Install Playwright Browsers
-      #   run: yarn playwright install chromium
+      - name: Install dependencies
+        run: npm install -g yarn@latest && yarn
+      - name: Install Playwright Browsers
+        run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
           name: email-address
           path: e2e/setup/
       - name: Run Tests
-        run: yarn test:e2e
+        run: yarn e2e:test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
@@ -74,10 +74,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      #   - name: Install dependencies
-      #     run: npm install -g yarn@latest && yarn
-      #   - name: Install Playwright Browsers
-      #     run: yarn playwright install chromium
+        - name: Install dependencies
+          run: npm install -g yarn@latest && yarn
+        - name: Install Playwright Browsers
+          run: yarn playwright install chromium
       - name: Download Email Address Artifact in Stage 2
         uses: actions/download-artifact@v4
         with:
@@ -89,10 +89,10 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: playwright-report-stage3
-          path: other-test-report
+          path: setup-test-report
           retention-days: 30
 
-  deploy_reports:
+  deploy-reports:
     runs-on: ubuntu-latest
     needs: delete-user-stage
     environment:
@@ -103,7 +103,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: playwright-report-stage3
-          path: other-test-report/
+          path: setup-test-report/
       - name: Download Playwright Report Artifact from Stage 2
         uses: actions/download-artifact@v4
         with:

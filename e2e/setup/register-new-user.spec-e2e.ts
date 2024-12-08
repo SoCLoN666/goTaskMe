@@ -14,11 +14,14 @@ test("register new user @prep", async ({
     { type: "password", description: PASSWORD }
   );
 
-  await RegisterAccountOperator.openRegisterPage();
+  await test.step("register new account", async () => {
+    await RegisterAccountOperator.openRegisterPage();
+    await RegisterAccountOperator.registerAccount(EMAIL_ADDRESS, PASSWORD);
+  });
 
-  await RegisterAccountOperator.registerAccount(EMAIL_ADDRESS, PASSWORD);
+  await test.step("validate user lands on create draft page", async () => {
+    await CreateNewOrderOperator.Stage.ContentType.Ids.createOrderGrid.waitFor();
 
-  await CreateNewOrderOperator.Stage.ContentTypeStage.Ids.createOrderGrid.waitFor();
-
-  AssertOperator.expectUrl.toContain("/customer/draft/new");
+    AssertOperator.expectUrl.toContain("/customer/draft/new");
+  });
 });

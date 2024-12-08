@@ -9,11 +9,17 @@ test("delete test user @cleanup", async ({
   LoginInAccountOperator,
   AssertOperator,
 }) => {
-  await LoginInAccountOperator.openPage();
-  await LoginInAccountOperator.loginIntoAccount(EMAIL_ADDRESS, PASSWORD);
+  await test.step("login into account", async () => {
+    await LoginInAccountOperator.openPage();
+    await LoginInAccountOperator.loginIntoAccount(EMAIL_ADDRESS, PASSWORD);
+  });
 
-  await SecurityPageOperator.openPage();
-  await SecurityPageOperator.deactivateAccount();
+  await test.step("deactivate account", async () => {
+    await SecurityPageOperator.openPage();
+    await SecurityPageOperator.deactivateAccount();
+  });
 
-  AssertOperator.expectUrl.toContain("/login");
+  await test.step("validate user lands on login page", async () => {
+    AssertOperator.expectUrl.toContain("/login");
+  });
 });

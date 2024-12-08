@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
+      // TO DO: i did not pay a lot of attention to this because it is time consuming to support on test task
       "@e2e-fixtures": ["e2e/core/fixtures/pages.ts"],
       "@e2e-keywords/*": ["e2e/keywords/*"],
       "@e2e-keywords-operator/*": ["e2e/operation-handlers/*"]

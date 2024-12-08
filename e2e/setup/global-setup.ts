@@ -7,8 +7,15 @@ async function globalSetup() {
   const password = "password123";
   const data = { email, password };
 
-  // Save the data to a file
-  const tempFilePath = path.resolve(__dirname, "../setup/temp.json");
+  const setupDir = path.resolve(__dirname, "../setup");
+  const tempDir = path.resolve(setupDir, "temp");
+
+  if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+    console.log(`Created directory: ${tempDir}`);
+  }
+
+  const tempFilePath = path.resolve(tempDir, "temp.json");
   fs.writeFileSync(tempFilePath, JSON.stringify(data, null, 2));
 
   console.log(`Generated Email: ${email}`);

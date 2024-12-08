@@ -22,39 +22,39 @@ export class CreateNewOrderKeywords {
     return stage;
   }
 
-  public static get ContentTypeStage(): typeof NewOrderContentTypeKeywords {
+  public static get ContentType(): typeof NewOrderContentTypeKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderContentTypeKeywords);
   }
 
-  public static get ServiceStage(): typeof NewOrderServiceKeywords {
+  public static get Service(): typeof NewOrderServiceKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderServiceKeywords);
   }
 
-  public static get LanguageStage(): typeof NewOrderLanguageKeywords {
+  public static get Language(): typeof NewOrderLanguageKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderLanguageKeywords);
   }
 
-  public static get SizeStage(): typeof NewOrderSizeKeywords {
+  public static get Size(): typeof NewOrderSizeKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderSizeKeywords);
   }
 
-  public static get DeadlineStage(): typeof NewOrderDeadlineKeywords {
+  public static get Deadline(): typeof NewOrderDeadlineKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderDeadlineKeywords);
   }
 
-  public static get TopicStage(): typeof NewOrderTopicKeywords {
+  public static get Topic(): typeof NewOrderTopicKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderTopicKeywords);
   }
 
-  public static get ThemeStage(): typeof NewOrderThemeKeywords {
+  public static get Theme(): typeof NewOrderThemeKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderThemeKeywords);
   }
 
-  public static get ContentRequirementsStage(): typeof NewOrderContentRequirementsKeywords {
+  public static get ContentRequirements(): typeof NewOrderContentRequirementsKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderContentRequirementsKeywords);
   }
 
-  public static get ConfirmationStage(): typeof NewOrderConfirmationKeywords {
+  public static get Confirmation(): typeof NewOrderConfirmationKeywords {
     return CreateNewOrderKeywords.initializeStage(NewOrderConfirmationKeywords);
   }
 }

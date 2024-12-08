@@ -1,8 +1,8 @@
 node_modules/
 /test-results/
 /test-report/
-/other-test-report/
+/setup-test-report/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-/e2e/temp.json
+e2e/setup/temp/

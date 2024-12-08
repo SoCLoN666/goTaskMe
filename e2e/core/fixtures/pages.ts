@@ -2,7 +2,7 @@ import { test as base } from "@playwright/test";
 import { AssertOperationHandler } from "../operation-handlers/assert-operator";
 import { CreateNewOrderOperationHandler } from "../operation-handlers/create-new-order-operator";
 import { LoginIntoAccountOperationHander } from "../operation-handlers/login-into-account-operator";
-import { CustomerOrdersPageOperationsHandler } from "../operation-handlers/orders-page-operators/customer-orders-page-operator";
+import { CustomerOrdersPageOperationsHandler } from "../operation-handlers/orders-page-operators/customer-orders-page-operator1";
 import { OrdersDraftsPageOperationsHandler } from "../operation-handlers/orders-page-operators/draft-orders-page-operator";
 import { RegisterAccountOperationHandler } from "../operation-handlers/register-account-operator";
 import { SecurityOperationsHandler } from "../operation-handlers/security-page";
@@ -11,7 +11,6 @@ type Fixtures = {
   RegisterAccountOperator: RegisterAccountOperationHandler;
   LoginInAccountOperator: LoginIntoAccountOperationHander;
   CreateNewOrderOperator: CreateNewOrderOperationHandler;
-  OrdersPageOperator: CustomerOrdersPageOperationsHandler;
   DraftOrdersPageOperator: OrdersDraftsPageOperationsHandler;
   SecurityPageOperator: SecurityOperationsHandler;
   AssertOperator: AssertOperationHandler;
@@ -34,12 +33,6 @@ export const test = base.extend<Fixtures>({
     const createNewOrderOperator = new CreateNewOrderOperationHandler(page);
 
     await use(createNewOrderOperator);
-  },
-
-  OrdersPageOperator: async ({ page }, use) => {
-    const ordersPageOperator = new CustomerOrdersPageOperationsHandler(page);
-
-    await use(ordersPageOperator);
   },
 
   DraftOrdersPageOperator: async ({ page }, use) => {
