@@ -1,4 +1,7 @@
-export const EMAIL_ADDRESS = generateAndGetEmailAddress();
+import fs from "fs";
+import path from "path";
+
+export const EMAIL_ADDRESS = getGeneratedEmail();
 export const PASSWORD = "password123";
 
 function generateEmailId(): string {
@@ -23,4 +26,17 @@ export function generateAndGetEmailAddress(): string {
   const emailAddress = emailId + "@" + emailDomail + ".com";
 
   return emailAddress;
+}
+
+function getGeneratedEmail(): string {
+  const tempFilePath = path.resolve(__dirname, "../setup/temp/temp.json");
+
+  if (fs.existsSync(tempFilePath)) {
+    const fileData = fs.readFileSync(tempFilePath, "utf-8");
+    const { email, password } = JSON.parse(fileData);
+
+    console.log(`Loaded Email: ${email}`);
+
+    return email;
+  }
 }

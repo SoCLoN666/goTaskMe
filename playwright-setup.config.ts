@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import { isCi } from "e2e/environment";
+import path from "path";
 
 export default defineConfig({
   testDir: "./e2e",
@@ -7,21 +8,12 @@ export default defineConfig({
   forbidOnly: isCi,
   retries: isCi ? 2 : 0,
   testMatch: "*.spec-e2e.ts",
-  maxFailures: isCi ? 10 : undefined,
   workers: isCi ? 3 : undefined,
-  reporter: [
-    [
-      "html",
-      {
-        open: "never",
-        outputFolder: process.env.TEST_TAG ? "./test-report" : "./setup-test-report",
-      },
-    ],
-  ],
+  maxFailures: isCi ? 10 : undefined,
+  reporter: "html",
   expect: {
     timeout: 30000,
   },
-
   use: {
     headless: true,
     trace: "retain-on-failure",
@@ -35,4 +27,5 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
   ],
+  globalSetup: path.resolve(__dirname, "e2e/setup/global-setup.ts"),
 });
